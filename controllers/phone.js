@@ -123,8 +123,7 @@ function callPeople(people, res) {
   // Construct Twilio response.
   const call = new twilio.TwimlResponse();
   if (!people || people.length < 1) {
-    call.play(config.audio.errorEncountered);
-    call.hangup();
+    call.redirect('/error_redirect/new_phone_call');
   } else {
     call.play(config.audio.aboutToStart);
     people.sort(config.target.sortFn).forEach((person, idx) => {
