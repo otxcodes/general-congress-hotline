@@ -1,3 +1,7 @@
+const request = require('request');
+
+const dc = require('./dc');
+
 const CONGRESS_API_URL = `https://congress.api.sunlightfoundation.com/legislators/locate?apikey=${
     process.env.SUNLIGHT_FOUNDATION_KEY}`;
 

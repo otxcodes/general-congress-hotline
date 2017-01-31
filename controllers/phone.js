@@ -1,13 +1,11 @@
 const path = require('path');
 
 const twilio = require('twilio');
-const request = require('request');
 
 const config = require(path.join(__dirname, '../', process.env.CONFIG));
 
 const phoneCall = require('./phone-call');
 const congress  = require('./congress');
-const dc = require('./dc');
 
 function switchboard(req, res) {
   console.log('Switchboard', req.body);
@@ -119,6 +117,7 @@ function callPeople(people, res) {
       phoneCall(call, phone);
     });
     call.play(config.audio.done);
+    call.message('Thanks for your support. Reply "yes" to opt-in to occasional notifications for other resistance opportunities.');
   }
 
   res.type('text/xml');
